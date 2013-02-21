@@ -24,7 +24,7 @@ singly =
     cookie singly.cookieName, maxage: expiration*86400000
     return singly
   authorize: (service, cburl=window.location.origin) ->
-    uri = "#{singly.base}/oauth/authorize?client_id=#{appKey}&service=#{service}&redirect_uri=#{cburl}&scope=email&response_type=token"
+    uri = "#{singly.base}/oauth/authorize?client_id=#{apiKey}&service=#{service}&redirect_uri=#{cburl}&scope=email&response_type=token"
     window.location.href = uri
     return singly
 
