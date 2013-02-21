@@ -17,6 +17,8 @@
 ## Usage
 
 ```javascript
+singly.setKey("APP KEY");
+
 //typical auth usage will look something like this
 
 if (!singly.token()) {
