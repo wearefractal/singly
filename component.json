@@ -1,0 +1,12 @@
+{
+  "name": "singly",
+  "version": "0.0.1",
+  "dependencies": {
+    "component/cookie":"*",
+    "visionmedia/superagent": "*"
+  },
+  "main": "dist/singly.js",
+  "scripts": [
+    "dist/singly.js"
+  ]
+}

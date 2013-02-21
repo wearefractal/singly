@@ -1,0 +1,32 @@
+{
+   "name":"singly",
+   "description":"Singly authentication for single page apps",
+   "version":"0.0.1",
+   "homepage":"http://github.com/wearefractal/singly",
+   "repository":"git://github.com/wearefractal/singly.git",
+   "author":"Fractal <contact@wearefractal.com> (http://wearefractal.com/)",
+   "main":"./index.js",
+   
+   "dependencies":{
+      "coffee-script":"*"
+   },
+   "devDependencies":{
+      "mocha":"*",
+      "chai":"*",
+      "mocha-phantomjs":"*",
+      "requirejs":"*",
+      "uglify-js":"*"
+   },
+   "scripts":{
+      "test":"mocha-phantomjs -R dot ./test/runner.html"
+   },
+   "engines":{
+      "node":">= 0.4.0"
+   },
+   "licenses":[
+      {
+         "type":"MIT",
+         "url":"http://github.com/wearefractal/singly/raw/master/LICENSE"
+      }
+   ]
+}
