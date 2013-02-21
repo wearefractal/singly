@@ -48,7 +48,7 @@ var myOpt = {
   }
 };
 
-singly.post('/twitter/friends', myOpt, function(err, res) {
+singly.post('/profiles/self', myOpt, function(err, res) {
   //res is the response object
 });
 
