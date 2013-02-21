@@ -1,7 +1,7 @@
 build: components lib
 	@rm -rf dist
 	@mkdir dist
-	@coffee -o dist -c lib/*.coffee
+	@coffee -b -o dist -c lib/*.coffee
 	@component build --standalone singly
 	@mv build/build.js singly.js
 	@rm -rf build
