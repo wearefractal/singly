@@ -32,12 +32,9 @@
       cookie(singly.cookieName, null);
       return singly;
     },
-    setToken: function(val, expiration) {
-      if (expiration == null) {
-        expiration = 30;
-      }
+    setToken: function(val) {
       cookie(singly.cookieName, val, {
-        maxage: expiration * 86400000
+        maxage: 604800000
       });
       return singly;
     },
