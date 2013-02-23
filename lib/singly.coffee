@@ -13,7 +13,6 @@ apiKey = null
 singly =
   base: "https://api.singly.com"
   cookieName: "singly_access_token"
-  redirectOnSucess: true
   setKey: (key) -> apiKey = key
   token: -> 
     return cookie singly.cookieName
@@ -21,9 +20,9 @@ singly =
     cookie singly.cookieName, null
     return singly
   setToken: (val, expiration=30) -> 
-    cookie singly.cookieName, maxage: expiration*86400000
+    cookie singly.cookieName, val, maxage: expiration*86400000
     return singly
-  authorize: (service, cburl=window.location.origin) ->
+  authorize: (service, cburl=window.location.href) ->
     uri = "#{singly.base}/oauth/authorize?client_id=#{apiKey}&service=#{service}&redirect_uri=#{cburl}&scope=email&response_type=token"
     window.location.href = uri
     return singly
@@ -33,11 +32,10 @@ singly =
       cb = opt
       opt = {}
     uri = "#{singly.base}#{path}"
-    req = request
+    req = request[type](uri)
       .type('json')
       .query(opt.qs)
       .query(access_token: singly.token())
-    req[type](uri)
     req.send opt.data if type in ['post','put']
     req.end cb
     return req
@@ -55,8 +53,6 @@ singly =
     singly.makeRequest path, opt, 'del', cb
 
 tok = getParam "access_token"
-if tok?
-  singly.setToken tok
-  window.location.href = "/" if singly.redirectOnSucess
+singly.setToken tok if tok?
 
 module.exports = singly

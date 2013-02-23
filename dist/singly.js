@@ -22,7 +22,6 @@
   singly = {
     base: "https://api.singly.com",
     cookieName: "singly_access_token",
-    redirectOnSucess: true,
     setKey: function(key) {
       return apiKey = key;
     },
@@ -37,7 +36,7 @@
       if (expiration == null) {
         expiration = 30;
       }
-      cookie(singly.cookieName, {
+      cookie(singly.cookieName, val, {
         maxage: expiration * 86400000
       });
       return singly;
@@ -45,7 +44,7 @@
     authorize: function(service, cburl) {
       var uri;
       if (cburl == null) {
-        cburl = window.location.origin;
+        cburl = window.location.href;
       }
       uri = "" + singly.base + "/oauth/authorize?client_id=" + apiKey + "&service=" + service + "&redirect_uri=" + cburl + "&scope=email&response_type=token";
       window.location.href = uri;
@@ -61,10 +60,9 @@
         opt = {};
       }
       uri = "" + singly.base + path;
-      req = request.type('json').query(opt.qs).query({
+      req = request[type](uri).type('json').query(opt.qs).query({
         access_token: singly.token()
       });
-      req[type](uri);
       if (type === 'post' || type === 'put') {
         req.send(opt.data);
       }
@@ -89,9 +87,6 @@
 
   if (tok != null) {
     singly.setToken(tok);
-    if (singly.redirectOnSucess) {
-      window.location.href = "/";
-    }
   }
 
   module.exports = singly;
