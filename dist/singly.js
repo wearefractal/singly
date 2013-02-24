@@ -37,7 +37,8 @@ singly = {
       expiration = 30;
     }
     cookie(singly.cookieName, {
-      maxage: expiration * 86400000
+      maxage: expiration * 86400000,
+      path: '/'
     });
     return singly;
   },

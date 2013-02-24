@@ -21,7 +21,7 @@ singly =
     cookie singly.cookieName, null
     return singly
   setToken: (val, expiration=30) -> 
-    cookie singly.cookieName, maxage: expiration*86400000
+    cookie singly.cookieName, maxage: expiration*86400000, path: '/'
     return singly
   authorize: (service, cburl=window.location.origin) ->
     uri = "#{singly.base}/oauth/authorize?client_id=#{apiKey}&service=#{service}&redirect_uri=#{cburl}&scope=email&response_type=token"
